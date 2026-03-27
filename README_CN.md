@@ -5,7 +5,7 @@
   ### 个人代理工具配置文件集合
   **Personal Proxy Tool Configuration Collection**
 
-  [![Clash](https://img.shields.io/badge/Clash-Meta-blue?style=flat-square&logo=clash)](Clash.yaml) [![Surge](https://img.shields.io/badge/Surge-5-orange?style=flat-square)](Surge.conf) [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+  [![Clash](https://img.shields.io/badge/Clash-Meta-blue?style=flat-square&logo=clash)](Clash.yaml) [![Surge](https://img.shields.io/badge/Surge-5-orange?style=flat-square)](https://github.com/ClashConnectRules/Surge) [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
   [**功能特性**](#-功能特性) · [**Clash**](#-clash-配置) · [**Surge**](#-surge-配置) · [**多订阅源**](#-多订阅源整合) · [**规则来源**](#-规则来源)
 
@@ -33,9 +33,9 @@
 ```
 Self-Configuration/
 ├── Clash.yaml      # Clash / Clash Meta 配置文件
-├── Surge.conf      # Surge 配置文件
-├── README.md       # 英文文档
-└── README_CN.md    # 中文文档
+└── README.md       # 文档
+
+ 🔶 Surge 配置 → https://github.com/ClashConnectRules/Surge
 ```
 
 ---
@@ -151,6 +151,28 @@ proxy-providers:
 
 ---
 
+## 🔶 Surge 配置
+
+> **👉 Surge 配置已迁移至: [ClashConnectRules/Surge](https://github.com/ClashConnectRules/Surge)**
+
+<div align="center">
+
+### 🔶 [点击前往 Surge 仓库 →](https://github.com/ClashConnectRules/Surge)
+
+[![Surge](https://img.shields.io/badge/Surge-5-orange?style=for-the-badge&logo=surge)](https://github.com/ClashConnectRules/Surge)
+
+| 功能 | 描述 |
+|:----:|:----:|
+| 🚀 **智能分流** | 智能流量分流 |
+| 🛡️ **广告拦截** | 多源广告规则 |
+| 🌍 **流媒体解锁** | Netflix、Disney+、YouTube、TikTok |
+| 🤖 **AI 服务** | ChatGPT、Claude、Gemini 专用路由 |
+| 📱 **跨平台** | iOS & macOS 支持 |
+
+</div>
+
+---
+
 ## 🔗 多订阅源整合
 
 当你有多个订阅源时，可以按以下方式整合：
@@ -245,133 +267,6 @@ proxy-groups:
 - **定期更新** - 设置合适的 `interval` 更新订阅
 - **健康检查** - 启用 `health-check` 过滤不可用节点
 - **备份方案** - 配置多个订阅源提高可用性
-
----
-
-## 🔶 Surge 配置
-
-> **适用客户端**: `Surge for iOS` · `Surge for macOS`
-
-### ⚙️ 基础设置
-
-| 配置项 | 值 | 说明 |
-|:------:|:-----:|:-----------:|
-| **HTTP 端口** | `6152` | Wi-Fi 共享端口 |
-| **SOCKS5 端口** | `6153` | Wi-Fi 共享端口 |
-| **外部控制** | `6160` | API 控制端口 |
-| **Web 面板** | `6166` | Dashboard 端口 |
-| **IPv6** | `false` | 默认关闭 |
-
-### 🌐 DNS 配置
-
-| 类型 | 服务器 | 提供商 |
-|:----:|:------:|:------:|
-| **系统 DNS** | `223.5.5.5`, `223.6.6.6`, `119.29.29.29` | 国内 DNS |
-| **DoH** | `https://doh.pub/dns-query` | DNSPod |
-| **DoH** | `https://dns.alidns.com/dns-query` | 阿里云 |
-| **DNS 劫持** | `8.8.8.8:53`, `8.8.4.4:53` | Google DNS |
-
-### 🎯 策略组
-
-#### 🚀 核心策略组
-
-| 策略组 | 类型 | 说明 |
-|:------:|:----:|:-----------:|
-| **NoAuto** | `select` | 主选择入口 |
-| **Automatic** | `select` | 地区策略选择 |
-| **AllServer** | `select` | 所有订阅节点 |
-| **Proxy** | `select` | 代理策略 |
-
-#### 🌍 地区节点组（自动测速）
-
-| 策略组 | 筛选规则 | 测试间隔 |
-|:------:|:--------:|:--------:|
-| **Hong Kong** | `港\|🇭🇰\|香港\|HK\|Hong` | 300s |
-| **Taiwan** | `台\|🇹🇼\|台湾\|TW\|Tai` | 300s |
-| **Japan** | `日\|🇯🇵\|日本\|JP\|Japan` | 300s |
-| **Singapore** | `坡\|🇸🇬\|新加坡\|狮城\|SG` | 300s |
-| **United States** | `美\|🇺🇸\|美国\|US\|States` | 300s |
-| **United Kingdom** | `🇬🇧\|英国\|UK` | 300s |
-| **Korea** | `韩\|韩国\|Korea\|KR\|🇰🇷` | 300s |
-| **Other** | *排除以上* | 300s |
-
-#### 📦 服务策略组
-
-| 策略组 | 默认策略 | 用途 |
-|:------:|:--------:|:-------:|
-| **AI** | Automatic | ChatGPT、Claude、Gemini、Bing |
-| **YouTube** | Automatic | YouTube 视频 |
-| **Netflix** | Hong Kong | Netflix 流媒体 |
-| **Disney+** | Hong Kong | Disney+ 流媒体 |
-| **TikTok** | Taiwan | TikTok 解锁 |
-| **Telegram** | Automatic | 即时通讯 |
-| **X** | Automatic | Twitter/X |
-| **Microsoft** | Mainland | 微软服务 |
-| **OneDrive** | Mainland | 云存储 |
-| **Apple** | Mainland | Apple 服务 |
-| **WeChat** | Mainland | 微信 |
-| **Bilibili** | Mainland | B站（支持港澳台解锁）|
-| **Speedtest** | Mainland | 测速工具 |
-
-### 📋 分流规则优先级
-
-```
- 1. 🔧 规则修正      → 直连
- 2. ✏️ 手动规则      → 自定义
- 3. 🚫 广告拦截      → 拒绝
- 4. 🔒 隐私保护      → 拒绝
- 5. 📱 国内应用      → 直连
- 6. 🍎 Apple 服务    → 直连
- 7. 🤖 AI 服务       → Automatic
- 8. 🎬 国际流媒体    → Regional
- 9. 🌏 地区解锁      → Regional
-10. 💬 国际社交      → Automatic
-11. 🔧 其他国际      → Auto
-12. 🇨🇳 国内规则     → 直连
-13. 🌐 国际规则      → Auto
-14. 🏠 本地网络      → 直连
-15. 🎯 兜底规则      → NoAuto
-```
-
-### ✨ 特色功能
-
-#### 🔄 URL 重写
-
-| 原地址 | 目标地址 | 类型 |
-|:------:|:--------:|:----:|
-| `google.cn` | `google.com` | 302 重定向 |
-| `maps.google.cn` | `maps.google.com` | 302 重定向 |
-| `taobao.com` | HTTPS | 强制升级 |
-| `jd.com` | HTTPS | 强制升级 |
-
-#### 🏠 Host 映射
-
-| 服务 | DNS 服务器 | 说明 |
-|:----:|:----------:|:----:|
-| **淘宝/天猫/支付宝** | `223.5.5.5` | 阿里系服务 |
-| **京东/QQ/微信** | `119.28.28.28` | 腾讯系服务 |
-| **B站/网易** | `119.29.29.29` | 娱乐服务 |
-| **路由器管理** | 系统 DNS | 本地设备 |
-
-### 🚀 快速开始
-
-#### 1. 导入配置
-
-下载 [Surge.conf](Surge.conf) 并导入到 Surge。
-
-#### 2. 修改订阅地址
-
-```
-AllServer = select, ..., policy-path=https://你的订阅地址
-```
-
-#### 3. 配置 MITM 证书
-
-安装并信任 MITM 证书以使用 URL 重写功能。
-
-#### 4. 启用配置
-
-在 Surge 中启用配置。
 
 ---
 

@@ -5,7 +5,7 @@
   ### Personal Proxy Tool Configuration Collection
   **个人代理工具配置文件集合**
 
-  [![Clash](https://img.shields.io/badge/Clash-Meta-blue?style=flat-square&logo=clash)](Clash.yaml) [![Surge](https://img.shields.io/badge/Surge-5-orange?style=flat-square)](Surge.conf) [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+  [![Clash](https://img.shields.io/badge/Clash-Meta-blue?style=flat-square&logo=clash)](Clash.yaml) [![Surge](https://img.shields.io/badge/Surge-5-orange?style=flat-square)](https://github.com/ClashConnectRules/Surge) [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
   [**Features**](#-features) • [**Clash**](#-clash-configuration) • [**Surge**](#-surge-configuration) • [**Providers**](#-multiple-proxy-providers) • [**Sources**](#-rule-sources)
 
@@ -33,9 +33,9 @@
 ```
 Self-Configuration/
 ├── Clash.yaml      # Clash / Clash Meta configuration
-├── Surge.conf      # Surge configuration
-├── README.md       # English documentation
-└── README_CN.md    # 中文文档
+└── README.md       # Documentation
+
+ 🔶 Surge Configuration → https://github.com/ClashConnectRules/Surge
 ```
 
 ---
@@ -151,6 +151,28 @@ Enable the configuration and select your preferred nodes.
 
 ---
 
+## 🔶 Surge Configuration
+
+> **👉 Surge configuration has been moved to: [ClashConnectRules/Surge](https://github.com/ClashConnectRules/Surge)**
+
+<div align="center">
+
+### 🔶 [Click here to go to Surge repository →](https://github.com/ClashConnectRules/Surge)
+
+[![Surge](https://img.shields.io/badge/Surge-5-orange?style=for-the-badge&logo=surge)](https://github.com/ClashConnectRules/Surge)
+
+| Feature | Description |
+|:-------:|:-----------:|
+| 🚀 **Smart Routing** | Intelligent traffic splitting |
+| 🛡️ **Ad Blocking** | Multi-source ad rules |
+| 🌍 **Streaming Unlock** | Netflix, Disney+, YouTube, TikTok |
+| 🤖 **AI Services** | ChatGPT, Claude, Gemini dedicated routing |
+| 📱 **Cross-Platform** | iOS & macOS support |
+
+</div>
+
+---
+
 ## 🔗 Multiple Proxy Providers
 
 When you have multiple subscription sources, you can integrate them as follows:
@@ -245,133 +267,6 @@ proxy-groups:
 - **Regular Updates** - Set appropriate `interval` for subscription updates
 - **Health Check** - Enable `health-check` to filter unavailable nodes
 - **Backup Sources** - Configure multiple subscriptions for higher availability
-
----
-
-## 🔶 Surge Configuration
-
-> **Compatible Clients**: `Surge for iOS` · `Surge for macOS`
-
-### ⚙️ Basic Settings
-
-| Setting | Value | Description |
-|:-------:|:-----:|:-----------:|
-| **HTTP Port** | `6152` | Wi-Fi sharing port |
-| **SOCKS5 Port** | `6153` | Wi-Fi sharing port |
-| **Controller** | `6160` | API control port |
-| **Dashboard** | `6166` | Web dashboard port |
-| **IPv6** | `false` | Disabled by default |
-
-### 🌐 DNS Configuration
-
-| Type | Server | Provider |
-|:----:|:------:|:--------:|
-| **System DNS** | `223.5.5.5`, `223.6.6.6`, `119.29.29.29` | China DNS |
-| **DoH** | `https://doh.pub/dns-query` | DNSPod |
-| **DoH** | `https://dns.alidns.com/dns-query` | Alibaba DNS |
-| **Hijack** | `8.8.8.8:53`, `8.8.4.4:53` | Google DNS |
-
-### 🎯 Proxy Groups
-
-#### 🚀 Core Groups
-
-| Group | Type | Description |
-|:-----:|:----:|:-----------:|
-| **NoAuto** | `select` | Main entry point |
-| **Automatic** | `select` | Regional selection |
-| **AllServer** | `select` | All subscription nodes |
-| **Proxy** | `select` | Proxy policy |
-
-#### 🌍 Regional Groups (Auto URL-Test)
-
-| Group | Filter Pattern | Interval |
-|:-----:|:--------------:|:--------:|
-| **Hong Kong** | `港\|🇭🇰\|香港\|HK\|Hong` | 300s |
-| **Taiwan** | `台\|🇹🇼\|台湾\|TW\|Tai` | 300s |
-| **Japan** | `日\|🇯🇵\|日本\|JP\|Japan` | 300s |
-| **Singapore** | `坡\|🇸🇬\|新加坡\|狮城\|SG` | 300s |
-| **United States** | `美\|🇺🇸\|美国\|US\|States` | 300s |
-| **United Kingdom** | `🇬🇧\|英国\|UK` | 300s |
-| **Korea** | `韩\|韩国\|Korea\|KR\|🇰🇷` | 300s |
-| **Other** | *Exclude above* | 300s |
-
-#### 📦 Service-Specific Groups
-
-| Group | Default | Purpose |
-|:-----:|:-------:|:-------:|
-| **AI** | Automatic | ChatGPT, Claude, Gemini, Bing |
-| **YouTube** | Automatic | YouTube videos |
-| **Netflix** | Hong Kong | Netflix streaming |
-| **Disney+** | Hong Kong | Disney+ streaming |
-| **TikTok** | Taiwan | TikTok unlock |
-| **Telegram** | Automatic | Messaging |
-| **X** | Automatic | Twitter/X |
-| **Microsoft** | Mainland | Microsoft services |
-| **OneDrive** | Mainland | Cloud storage |
-| **Apple** | Mainland | Apple services |
-| **WeChat** | Mainland | WeChat |
-| **Bilibili** | Mainland | Bilibili (HK/TW unlock) |
-| **Speedtest** | Mainland | Speed test |
-
-### 📋 Rule Priority
-
-```
- 1. 🔧 Unbreak Rules    → DIRECT
- 2. ✏️ Manual Rules     → Custom
- 3. 🚫 Ad Blocking      → REJECT
- 4. 🔒 Privacy          → REJECT
- 5. 📱 CN Apps          → DIRECT
- 6. 🍎 Apple Services   → DIRECT
- 7. 🤖 AI Services      → Automatic
- 8. 🎬 Streaming        → Regional
- 9. 🌏 Regional Unlock  → Regional
-10. 💬 Social Media     → Automatic
-11. 🔧 Other Global     → Auto
-12. 🇨🇳 CN Rules        → DIRECT
-13. 🌐 Global Rules     → Auto
-14. 🏠 LAN              → DIRECT
-15. 🎯 Final Rule       → NoAuto
-```
-
-### ✨ Special Features
-
-#### 🔄 URL Rewrite
-
-| Original | Target | Type |
-|:--------:|:------:|:----:|
-| `google.cn` | `google.com` | 302 Redirect |
-| `maps.google.cn` | `maps.google.com` | 302 Redirect |
-| `taobao.com` | HTTPS | Force upgrade |
-| `jd.com` | HTTPS | Force upgrade |
-
-#### 🏠 Host Mapping
-
-| Service | DNS Server | Description |
-|:-------:|:----------:|:-----------:|
-| **Taobao/Tmall/Alipay** | `223.5.5.5` | Alibaba services |
-| **JD/QQ/WeChat** | `119.28.28.28` | Tencent services |
-| **Bilibili/NetEase** | `119.29.29.29` | Entertainment |
-| **Router Admin** | System DNS | Local devices |
-
-### 🚀 Quick Start
-
-#### 1. Import Configuration
-
-Download [Surge.conf](Surge.conf) and import it to Surge.
-
-#### 2. Update Subscription URL
-
-```
-AllServer = select, ..., policy-path=https://your-subscription-url
-```
-
-#### 3. Configure MITM Certificate
-
-Install and trust the MITM certificate for URL rewrite functionality.
-
-#### 4. Enable Configuration
-
-Enable the configuration in Surge.
 
 ---
 
